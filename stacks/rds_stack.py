@@ -38,14 +38,13 @@ class RDSStack(Stack):
 
         parameter_group = rds.ParameterGroup(self, prj_name+'-postgres-parameter-'+config,
             engine=rds.DatabaseInstanceEngine.postgres(version=config_db['version']),
-            description='Parameter for Prynwan Postgresql'
+            description='Parameter for Postgresql'
         )
 
         db_postgres = rds.DatabaseInstance(self, construct_id,
             instance_identifier=construct_id,
             engine=rds.DatabaseInstanceEngine.postgres(version=config_db['version']),
-            database_name="prynwan",
-            # master_user=rds.Login(username='prynwan-user', password=rds_creds.secret_value_from_json('password')),
+            database_name="example",
             instance_type=ec2.InstanceType.of(
                 config_db['InstanceClass'], 
                 config_db['InstanceSize']),

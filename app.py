@@ -28,7 +28,7 @@ rds_stack = RDSStack(app, prj_name+'-rds-platform-stack-'+config, vpc=vpc_stack.
 s3_stack = S3Stack(app, prj_name+'-s3-platform-stack-'+config, config=config, env=env)
 cdn_stack = CDNStack(app, prj_name+'-cdn-platform-stack-'+config, s3_bucket=cdk.Fn.import_value(s3_stack.s3_output_1.export_name), buildConfig=buildConfig['vpn-client'], config=config, env=env)
 eks_stack = EKSStack(app, prj_name+'-eks-stack-'+config, buildConfig=buildConfig['eks'], vpc=vpc_stack.vpc, config=config, env=env)
-vpn_cilent_stack = VPNClientStack(app, prj_name+'-vpn-client-stack-'+config, buildConfig=buildConfig['vpn-client'], sg=security_stack.vpn_client_prynwan_sg, vpc=vpc_stack.vpc, env=env)
+vpn_cilent_stack = VPNClientStack(app, prj_name+'-vpn-client-stack-'+config, buildConfig=buildConfig['vpn-client'], sg=security_stack.vpn_client_sg, vpc=vpc_stack.vpc, env=env)
 
 match config:
     case 'dev':

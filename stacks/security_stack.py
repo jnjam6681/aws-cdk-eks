@@ -18,8 +18,8 @@ class SecurityStack(Stack):
         #     allow_all_outbound=True
         # )
 
-        self.vpn_client_prynwan_sg = ec2.SecurityGroup(self, prj_name+'-vpn-client',
-            security_group_name=prj_name+'-vpn-client-prynwan-sg',
+        self.vpn_client_sg = ec2.SecurityGroup(self, prj_name+'-vpn-client',
+            security_group_name=prj_name+'-vpn-client-sg',
             vpc=vpc,
             # description="SG for Service",
             allow_all_outbound=True
