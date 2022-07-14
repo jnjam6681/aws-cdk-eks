@@ -1,0 +1,60 @@
+{
+  "app": "python3 app.py",
+  "watch": {
+    "include": [
+      "**"
+    ],
+    "exclude": [
+      "README.md",
+      "cdk*.json",
+      "requirements*.txt",
+      "source.bat",
+      "**/__init__.py",
+      "python/__pycache__",
+      "tests"
+    ]
+  },
+  "context": {
+    "project_name": "project",
+    "dev": {
+      "account": "847796xxxxxx",
+      "region": "ap-southeast-1"
+    },
+    "uat": {
+      "account": "847796xxxxxx",
+      "region": "ap-southeast-1"
+    },
+    "prod": {
+      "account": "566773xxxxxx",
+      "region": "ap-southeast-1",
+      "eks": {
+        "create_new_cluster_admin_role": "True",
+        "existing_admin_role_arn": "",
+        "eks_version": "1.21",
+        "eks_deploy_managed_nodegroup": "True",
+        "eks_node_instance_type": "t3.large",
+        "eks_node_ami_version": "1.21.12-20220629",
+        "deploy_cluster_autoscaler": "False",
+        "deploy_metrics_server": "True"
+      },
+      "vpn-client": {
+        "server_certificate_arn": "arn:aws:acm:ap-southeast-1:566773xxxxxx:certificate/e54e08a2-37fe-4908-xxxx-51153367fb29",
+        "client_certificate_arn": "arn:aws:acm:ap-southeast-1:566773xxxxxx:certificate/5f1ffd77-b97d-4122-xxxx-cc166d4f9605"
+      },
+      "cdn": {
+        "acm_arn": "arn:aws:acm:us-east-1:566773xxxxxx:certificate/c4a70318-5d6f-4ea2-xxxx-a82feae31ae1"
+      }
+    },
+    "@aws-cdk/aws-apigateway:usagePlanKeyOrderInsensitiveId": true,
+    "@aws-cdk/core:stackRelativeExports": true,
+    "@aws-cdk/aws-rds:lowercaseDbIdentifier": true,
+    "@aws-cdk/aws-lambda:recognizeVersionProps": true,
+    "@aws-cdk/aws-cloudfront:defaultSecurityPolicyTLSv1.2_2021": true,
+    "@aws-cdk-containers/ecs-service-extensions:enableDefaultLogDriver": true,
+    "@aws-cdk/aws-ec2:uniqueImdsv2TemplateName": true,
+    "@aws-cdk/core:target-partitions": [
+      "aws",
+      "aws-cn"
+    ]
+  }
+}
